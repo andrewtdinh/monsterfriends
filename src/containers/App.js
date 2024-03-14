@@ -14,12 +14,11 @@ function App() {
       fetch("https://jsonplaceholder.typicode.com/users")
         .then((response) => response.json())
         .then((users) => setRobots(users));
-  })
+  }, []);
 
   const filteredRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchfield.toLowerCase());
   });
-
 
   return !robots.length ? (
     <h1>Loading...</h1>

@@ -10,17 +10,11 @@ function App() {
   const [ robots, setRobots ] = useState([]);
   const [ searchfield, setSearchfield ] = useState('');
 
-  // componentDidMount() {
-  //   fetch("https://jsonplaceholder.typicode.com/users")
-  //     .then((response) => {
-  //       const users = response.json();
-  //       console.log({ users });
-  //       return users;
-  //     })
-  //     .then((users) => {
-  //       this.setState({ robots: users });
-  //     });
-  // }
+  useEffect(() => {
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((users) => setRobots(users));
+  })
 
   const filteredRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchfield.toLowerCase());
